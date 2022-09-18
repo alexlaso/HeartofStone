@@ -1,14 +1,16 @@
 import java.time.LocalDateTime
 
 fun main() {
-    var listaItems= arrayListOf<Any>()
+    var listaItems= arrayListOf<Items>()
     fun generarListaItems(){
         for (i in 1..200){
-            val item:Any = Items(id = i, fecha = LocalDateTime.now()).crearItem()
+            val item: Items = crearItem(i)
             listaItems.add(item)
         }
     }
     generarListaItems()
 
-    println(listaItems)
+    for (element in listaItems){
+        println(element)
+    }
 }

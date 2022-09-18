@@ -1,22 +1,27 @@
 import java.time.LocalDateTime
-class Items(val id: Int?, val fecha: LocalDateTime,var nivel: IntRange = 1..3, val tipoItem: String? =null){
+open class Items(val id: Int?, val fecha: LocalDateTime = LocalDateTime.now(), var nivel: Int = (1..3).random(), val tipoItem: String){
 
-    class Comida(val alimento: String = "", tipoItem: String){
+    override fun toString(): String {
+        return "Items(id=$id, fecha=$fecha, nivel=$nivel, tipoItem=$tipoItem)"
+    }
+}
+
+    class Comida constructor(id : Int?, fecha : LocalDateTime = LocalDateTime.now(), tipoItem: String) : Items(id, fecha, tipoItem = tipoItem){
     }
 
-    class Hechizo(val valor: Int = 7, tipoItem: String){}
+    class Hechizo constructor(id : Int?, fecha : LocalDateTime = LocalDateTime.now(),val valor: Int = 7, tipoItem: String) : Items(id, fecha, tipoItem = tipoItem){}
 
-    class Material(val valor: Int = 5, tipoItem: String){}
+    class Material constructor(id : Int?, fecha : LocalDateTime = LocalDateTime.now(),val valor: Int = 5, tipoItem: String) : Items(id, fecha, tipoItem = tipoItem){}
 
-    class Pocion(val valor: Int = 2, tipoItem: String){}
+    class Pocion constructor(id : Int?, fecha : LocalDateTime = LocalDateTime.now(),val valor: Int = 2, tipoItem: String) : Items(id, fecha, tipoItem = tipoItem){}
 
-    fun crearItem(){
-        val tipoRand : Int = (1..4).random()
-        when (tipoRand){
-            1 -> Comida(tipoItem = "Comida")
-            2 -> Hechizo(tipoItem = "Hechizo")
-            3 -> Material(tipoItem = "Material")
-            4 -> Pocion(tipoItem = "Pocion")
-        }
+
+fun crearItem(id: Int): Items{
+    val tipoRand : Int = (1..4).random()
+    when (tipoRand){
+        1 -> return Comida(id = id, tipoItem = "Comida")
+        2 -> return Hechizo(id = id, tipoItem = "Hechizo")
+        3 -> return Material(id = id, tipoItem = "Material")
+        else -> return Pocion(id = id, tipoItem = "Pocion")
     }
 }
