@@ -9,10 +9,21 @@ fun rango(): Int {
     return valorFinal
 }
 
-class Mapa (val columas : Int = rango(), val filas : Int = rango()){
+class Mapa (val filas : Int = rango(), val columnas : Int = rango()){
+    var mapa:Array<Array<Items>> = Array(filas){Array(columnas)}
+    fun crearMapa(){
+        for(i in 0 until filas){
+            for (j in 0 until columnas){
+            }
+            println("")
+        }
+    }
 
-    fun crearMapa()
-    {
-        var mapa: Array<Array<Items>>
+    fun rellenarMapa(mapa: Mapa, listaItems: ArrayList<Items>){
+        for (i in 0 until filas){
+            for (j in 0 until columnas){
+            }
+        }
+    }
 
-    }}
+    }

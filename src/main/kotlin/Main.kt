@@ -13,4 +13,8 @@ fun main() {
     for (element in listaItems){
         println(element)
     }
+
+    val mapa = Mapa()
+
+    mapa.mostrarMapa()
 }
